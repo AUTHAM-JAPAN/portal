@@ -36,7 +36,27 @@ gulp.task('less-compile', function () {
 			'!../resources/assets/less/mobile-nav.less',
 			'!../resources/assets/less/shortcodes.less',
 			'!../resources/assets/less/theme.less',
-			'!../resources/assets/less/variables/*.less'
+			'!../resources/assets/less/variables/*.less',
+			'!../resources/assets/less/bootstrap/a*.less',
+			'!../resources/assets/less/bootstrap/badges.less',
+			'!../resources/assets/less/bootstrap/breadcrumbs.less',
+			'!../resources/assets/less/bootstrap/button*.less',
+			'!../resources/assets/less/bootstrap/c*.less',
+			'!../resources/assets/less/bootstrap/d*.less',
+			'!../resources/assets/less/bootstrap/f*.less',
+			'!../resources/assets/less/bootstrap/g*.less',
+			'!../resources/assets/less/bootstrap/i*.less',
+			'!../resources/assets/less/bootstrap/j*.less',
+			'!../resources/assets/less/bootstrap/l*.less',
+			'!../resources/assets/less/bootstrap/m*.less',
+			'!../resources/assets/less/bootstrap/n*.less',
+			'!../resources/assets/less/bootstrap/p*.less',
+			'!../resources/assets/less/bootstrap/r*.less',
+			'!../resources/assets/less/bootstrap/s*.less',
+			'!../resources/assets/less/bootstrap/t*.less',
+			'!../resources/assets/less/bootstrap/u*.less',
+			'!../resources/assets/less/bootstrap/v*.less',
+			'!../resources/assets/less/bootstrap/w*.less'
 		])
 		.pipe(less())
 		.pipe(gulp.dest('../public/assets/css/'));
