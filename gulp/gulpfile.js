@@ -29,7 +29,15 @@ gulp.task('typescript-compile', function(){
 });
 
 gulp.task('less-compile', function () {
-	gulp.src('../resources/assets/less/**/*.less')
+	gulp.src([
+			'../resources/assets/less/**/*.less',
+			'!../resources/assets/less/buttons.less',
+			'!../resources/assets/less/invoice.less',
+			'!../resources/assets/less/mobile-nav.less',
+			'!../resources/assets/less/shortcodes.less',
+			'!../resources/assets/less/theme.less',
+			'!../resources/assets/less/variables/*.less'
+		])
 		.pipe(less())
 		.pipe(gulp.dest('../public/assets/css/'));
 
