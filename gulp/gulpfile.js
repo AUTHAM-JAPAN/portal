@@ -56,7 +56,18 @@ gulp.task('less-compile', function () {
 			'!../resources/assets/less/bootstrap/t*.less',
 			'!../resources/assets/less/bootstrap/u*.less',
 			'!../resources/assets/less/bootstrap/v*.less',
-			'!../resources/assets/less/bootstrap/w*.less'
+			'!../resources/assets/less/bootstrap/w*.less',
+			'!../resources/assets/less/font-awesome/a*.less',
+			'!../resources/assets/less/font-awesome/b*.less',
+			'!../resources/assets/less/font-awesome/c*.less',
+			'!../resources/assets/less/font-awesome/fixed-width.less',
+			'!../resources/assets/less/font-awesome/i*.less',
+			'!../resources/assets/less/font-awesome/l*.less',
+			'!../resources/assets/less/font-awesome/m*.less',
+			'!../resources/assets/less/font-awesome/p*.less',
+			'!../resources/assets/less/font-awesome/r*.less',
+			'!../resources/assets/less/font-awesome/s*.less',
+			'!../resources/assets/less/font-awesome/v*.less'
 		])
 		.pipe(less())
 		.pipe(gulp.dest('../public/assets/css/'));
