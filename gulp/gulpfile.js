@@ -18,7 +18,10 @@ gulp.task('browser-sync', function() {
 
 gulp.task('typescript-compile', function(){
 	// 対象となるファイルを全部指定
-	gulp.src(['../resources/assets/ts/**/*.ts'])
+	gulp.src([
+			'../resources/assets/ts/**/*.ts',
+			'!../resources/assets/ts/typings/*.ts'
+		])
 		// 1対1でコンパイル
 		.pipe(typescript({ target: "ES5", removeComments: true, noExternalResolve: true }))
 		// jsプロパティを参照

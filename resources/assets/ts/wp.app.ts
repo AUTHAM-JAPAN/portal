@@ -1,3 +1,5 @@
+/// <reference path="./typings/jquery/jquery.d.ts" />
+
 $(document).ready(function() {
 
 	// WP Mobile Nav (Second method besides Bootstrap standrd menu) - Populating mobile nav list

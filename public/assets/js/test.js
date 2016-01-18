@@ -8,6 +8,8 @@ var Test = (function () {
     ;
     Test.prototype.alertFullName = function () {
         alert(this.firstName + ' ' + this.lastName);
+        var data = $('#id').val();
+        var data2 = $('#id2').val();
     };
     ;
     return Test;
