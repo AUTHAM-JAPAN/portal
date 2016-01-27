@@ -10,7 +10,7 @@ gulp.task('browser-sync', function() {
 		proxy: "localhost",
         //host: "dev.autham.net",
         open: false
-    }); 
+    });
 
     //gulp.watch(["offerbox/**/*","!offerbox/public_html/fuel/app/logs/**/*"]).on('change', browserSync.reload);
     gulp.watch(["../app/**/*.php", "../resources/**/*.php"]).on('change', browserSync.reload);
@@ -19,8 +19,7 @@ gulp.task('browser-sync', function() {
 gulp.task('typescript-compile', function(){
 	// 対象となるファイルを全部指定
 	gulp.src([
-			'../resources/assets/ts/**/*.ts',
-			'!../resources/assets/ts/typings/*.ts'
+			'../resources/assets/ts/**/*.ts'
 		])
 		// 1対1でコンパイル
 		.pipe(typescript({ target: "ES5", removeComments: true, noExternalResolve: true }))
@@ -84,6 +83,6 @@ gulp.task('default', function(callback) {
 		'typescript-compile',
 		'less-compile',
         callback
-    );  
+    );
 });
 
