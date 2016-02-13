@@ -10,6 +10,12 @@
     },
     "underscore/underscore.d.ts": {
       "commit": "d6c51c607bd90c8bf0e065fabc41bc3f937425df"
+    },
+    "react/react.d.ts": {
+      "commit": "3fc1377ce29dd9670975cb68615edf1b819fc4a5"
+    },
+    "classnames/classnames.d.ts": {
+      "commit": "14ab703f435375194360cdba3abab61afc879c18"
     }
   }
 }

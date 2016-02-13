@@ -19,15 +19,15 @@ gulp.task('browser-sync', function() {
 gulp.task('typescript-compile', function(){
 	// 対象となるファイルを全部指定
 	gulp.src([
-			'../resources/assets/ts/**/*.ts'
+			'../resources/assets/ts/**/*.{ts,tsx}'
 		])
 		// 1対1でコンパイル
-		.pipe(typescript({ target: "ES5", removeComments: true, noExternalResolve: true }))
+		.pipe(typescript({ target: "ES5", removeComments: true, noExternalResolve: true, jsx:"react" }))
 		// jsプロパティを参照
 		.js
 		.pipe(gulp.dest('../public/assets/js/'));
 
-	gulp.watch(['../resources/assets/ts/**/*.ts'], ['typescript-compile']);
+	gulp.watch(['../resources/assets/ts/**/*.{ts,tsx}'], ['typescript-compile']);
 });
 
 gulp.task('less-compile', function () {
