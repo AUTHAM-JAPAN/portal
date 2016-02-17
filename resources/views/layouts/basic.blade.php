@@ -13,6 +13,7 @@
 	<link href="/assets/css/font-awesome/font-awesome.css" type="text/css" rel="stylesheet">
 	<link href="/assets/node_modules/todomvc-common/base.css" rel="stylesheet">
 	<link href="/assets/node_modules/todomvc-app-css/index.css" rel="stylesheet">
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
 	<link href="/assets/css/app.css" type="text/css" rel="stylesheet">
 
 </head>
@@ -22,7 +23,6 @@
     <script type="text/javascript" src="/assets/js/jquery/jquery.js"></script>
     <script type="text/javascript" src="/assets/js/jquery/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="/assets/node_modules/todomvc-common/base.js"></script>
-	<script type="text/javascript" src="/assets/node_modules/react/dist/react-with-addons.js"></script>
 	<script type="text/javascript" src="/assets/node_modules/classnames/index.js"></script>
 	<script type="text/javascript" src="/assets/node_modules/director/build/director.js"></script>
 	<script type="text/javascript" src="/assets/js/bundle.js"></script>

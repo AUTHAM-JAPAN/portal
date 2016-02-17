@@ -3,6 +3,8 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
+var React = require('react');
+var ReactDOM = require('react-dom');
 var constants_1 = require("./constants");
 var TodoItem = (function (_super) {
     __extends(TodoItem, _super);
@@ -44,7 +46,7 @@ var TodoItem = (function (_super) {
     };
     TodoItem.prototype.componentDidUpdate = function (prevProps) {
         if (!prevProps.editing && this.props.editing) {
-            var node = React.findDOMNode(this.refs["editField"]);
+            var node = ReactDOM.findDOMNode(this.refs["editField"]);
             node.focus();
             node.setSelectionRange(node.value.length, node.value.length);
         }

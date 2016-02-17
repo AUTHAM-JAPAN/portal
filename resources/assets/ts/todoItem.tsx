@@ -6,6 +6,8 @@
 
 /// <reference path="./typings/tsd.d.ts" />
 /// <reference path="./interfaces.d.ts"/>
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 
 import { ENTER_KEY, ESCAPE_KEY } from "./constants";
 
@@ -70,7 +72,7 @@ class TodoItem extends React.Component<ITodoItemProps, ITodoItemState> {
    */
   public componentDidUpdate(prevProps : ITodoItemProps) {
     if (!prevProps.editing && this.props.editing) {
-      var node = React.findDOMNode<HTMLInputElement>(this.refs["editField"]);
+      var node = ReactDOM.findDOMNode<HTMLInputElement>(this.refs["editField"]);
       node.focus();
       node.setSelectionRange(node.value.length, node.value.length);
     }

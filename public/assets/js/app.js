@@ -3,9 +3,15 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
+var React = require('react');
+var ReactDOM = require('react-dom');
+var material_ui_1 = require('material-ui');
+var injectTapEventPlugin = require('react-tap-event-plugin');
+injectTapEventPlugin();
 var todoModel_1 = require("./todoModel");
 var footer_1 = require("./footer");
 var todoItem_1 = require("./todoItem");
+var theme_1 = require("./theme");
 var constants_1 = require("./constants");
 var TodoApp = (function (_super) {
     __extends(TodoApp, _super);
@@ -16,6 +22,12 @@ var TodoApp = (function (_super) {
             editing: null
         };
     }
+    TodoApp.prototype.getChildContext = function () {
+        return {
+            muiTheme: material_ui_1.Styles.ThemeManager.getMuiTheme(theme_1.default)
+        };
+    };
+    ;
     TodoApp.prototype.componentDidMount = function () {
         var setState = this.setState;
         var router = Router({
@@ -30,10 +42,10 @@ var TodoApp = (function (_super) {
             return;
         }
         event.preventDefault();
-        var val = React.findDOMNode(this.refs["newField"]).value.trim();
+        var val = ReactDOM.findDOMNode(this.refs["newField"]).value.trim();
         if (val) {
             this.props.model.addTodo(val);
-            React.findDOMNode(this.refs["newField"]).value = '';
+            ReactDOM.findDOMNode(this.refs["newField"]).value = '';
         }
     };
     TodoApp.prototype.toggleAll = function (event) {
@@ -89,13 +101,16 @@ var TodoApp = (function (_super) {
         if (todos.length) {
             main = (React.createElement("section", {"className": "main"}, React.createElement("input", {"className": "toggle-all", "type": "checkbox", "onChange": function (e) { return _this.toggleAll(e); }, "checked": activeTodoCount === 0}), React.createElement("ul", {"className": "todo-list"}, todoItems)));
         }
-        return (React.createElement("div", null, React.createElement("header", {"className": "header"}, React.createElement("h1", null, "todos"), React.createElement("input", {"ref": "newField", "className": "new-todo", "placeholder": "What needs to be done?", "onKeyDown": function (e) { return _this.handleNewTodoKeyDown(e); }, "autoFocus": true})), main, footer));
+        return (React.createElement("div", null, React.createElement(material_ui_1.AppBar, {"title": "Todos", "iconClassNameRight": "muidocs-icon-navigation-expand-more"}), React.createElement("header", {"className": "header"}, React.createElement("input", {"ref": "newField", "className": "new-todo", "placeholder": "What needs to be done?", "onKeyDown": function (e) { return _this.handleNewTodoKeyDown(e); }, "autoFocus": true})), main, footer));
+    };
+    TodoApp.childContextTypes = {
+        muiTheme: React.PropTypes.object
     };
     return TodoApp;
 })(React.Component);
 var model = new todoModel_1.TodoModel('react-todos');
 function render() {
-    React.render(React.createElement(TodoApp, {"model": model}), document.getElementsByClassName('todoapp')[0]);
+    ReactDOM.render(React.createElement(TodoApp, {"model": model}), document.getElementsByClassName('todoapp')[0]);
 }
 model.subscribe(render);
 render();

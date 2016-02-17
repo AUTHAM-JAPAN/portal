@@ -6,15 +6,34 @@
 
 /// <reference path="./typings/tsd.d.ts" />
 /// <reference path="./interfaces.d.ts"/>
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import { AppBar, Styles } from 'material-ui';
+
+import injectTapEventPlugin = require('react-tap-event-plugin');
+injectTapEventPlugin();
 
 declare var Router;
 
 import { TodoModel } from "./todoModel";
 import { TodoFooter } from "./footer";
 import { TodoItem } from "./todoItem";
+import Theme from "./theme";
 import { ALL_TODOS, ACTIVE_TODOS, COMPLETED_TODOS, ENTER_KEY } from "./constants";
 
-class TodoApp extends React.Component<IAppProps, IAppState> {
+//Styles.ThemeDecorator(Styles.ThemeManager.getMuiTheme(Theme));
+class TodoApp extends React.Component<IAppProps, IAppState> 
+										implements React.ChildContextProvider<any> {
+
+  static childContextTypes: React.ValidationMap<any> = {
+      muiTheme: React.PropTypes.object
+  };
+
+  getChildContext(): any {
+      return {
+          muiTheme: Styles.ThemeManager.getMuiTheme(Theme)
+      };
+  };
 
   public state : IAppState;
 
@@ -43,11 +62,11 @@ class TodoApp extends React.Component<IAppProps, IAppState> {
 
     event.preventDefault();
 
-    var val = React.findDOMNode<HTMLInputElement>(this.refs["newField"]).value.trim();
+    var val = ReactDOM.findDOMNode<HTMLInputElement>(this.refs["newField"]).value.trim();
 
     if (val) {
       this.props.model.addTodo(val);
-      React.findDOMNode<HTMLInputElement>(this.refs["newField"]).value = '';
+      ReactDOM.findDOMNode<HTMLInputElement>(this.refs["newField"]).value = '';
     }
   }
 
@@ -151,8 +170,11 @@ class TodoApp extends React.Component<IAppProps, IAppState> {
 
     return (
       <div>
+        <AppBar
+          title="Todos"
+          iconClassNameRight="muidocs-icon-navigation-expand-more"
+        />
         <header className="header">
-          <h1>todos</h1>
           <input
             ref="newField"
             className="new-todo"
@@ -171,7 +193,7 @@ class TodoApp extends React.Component<IAppProps, IAppState> {
 var model = new TodoModel('react-todos');
 
 function render() {
-  React.render(
+  ReactDOM.render(
     <TodoApp model={model}/>,
     document.getElementsByClassName('todoapp')[0]
   );

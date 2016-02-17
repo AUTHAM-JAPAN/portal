@@ -12,10 +12,16 @@
       "commit": "d6c51c607bd90c8bf0e065fabc41bc3f937425df"
     },
     "react/react.d.ts": {
-      "commit": "3fc1377ce29dd9670975cb68615edf1b819fc4a5"
+      "commit": "85af69c91599a6c904618545f0613970e1ff3f64"
     },
     "classnames/classnames.d.ts": {
       "commit": "14ab703f435375194360cdba3abab61afc879c18"
+    },
+    "react/react-dom.d.ts": {
+      "commit": "85af69c91599a6c904618545f0613970e1ff3f64"
+    },
+    "material-ui/material-ui.d.ts": {
+      "commit": "85af69c91599a6c904618545f0613970e1ff3f64"
     }
   }
 }

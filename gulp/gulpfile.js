@@ -3,6 +3,8 @@ var runSequence  = require('run-sequence');
 var browserSync  = require('browser-sync').create();
 var typescript = require('gulp-typescript');
 var less = require('gulp-less');
+var browserify = require('gulp-browserify');
+var rename = require('gulp-rename');
 
 gulp.task('browser-sync', function() {
     browserSync.init({
@@ -22,7 +24,7 @@ gulp.task('typescript-compile', function(){
 			'../resources/assets/ts/**/*.{ts,tsx}'
 		])
 		// 1対1でコンパイル
-		.pipe(typescript({ target: "ES5", removeComments: true, noExternalResolve: true, jsx:"react" }))
+		.pipe(typescript({ target: "ES5", removeComments: true, noExternalResolve: true, jsx:"react", module:"commonjs" }))
 		// jsプロパティを参照
 		.js
 		.pipe(gulp.dest('../public/assets/js/'));
@@ -77,11 +79,26 @@ gulp.task('less-compile', function () {
 	gulp.watch(['../resources/assets/less/**/*.less'], ['less-compile']);
 });
 
+gulp.task('browserify', function(){
+	gulp.src('../public/assets/js/app.js')
+		.pipe(browserify({
+		  insertGlobals : true
+		}))
+		/*
+		.on('prebundle', function(bundle) {
+			bundle.external(['react', 'react-dom', 'material-ui/lib/app-bar']);
+		})
+		*/
+		.pipe(rename('bundle.js'))
+		.pipe(gulp.dest('../public/assets/js'))
+});
+
 gulp.task('default', function(callback) {
     return runSequence(
         //'browser-sync',
 		'typescript-compile',
 		'less-compile',
+		'browserify',
         callback
     );
 });

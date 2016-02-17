@@ -6,6 +6,8 @@
 
 /// <reference path="./typings/tsd.d.ts" />
 /// <reference path="./interfaces.d.ts"/>
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 
 import { ALL_TODOS, ACTIVE_TODOS, COMPLETED_TODOS } from "./constants";
 import { Utils } from "./utils";
